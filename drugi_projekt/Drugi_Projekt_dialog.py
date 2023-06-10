@@ -60,8 +60,23 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             nr.append(punkt[" nr "])
             
         If self.redioButton.isChecked() == Trude and zliczenie_obiektow
+            dh = z[1] -z[0]
+            punkt_1 = nr[0]
+            punkt_2 = nr[1]
+            inface.messageBar().pushMessage("przewyzszenie wysokosci miedzy punktem" '+str(punkt_1)+ 'a punktem 'str(punkt_2)+'radioButton_pole)
             
-            
+        elif self.radioButton_pole.isChecked()  == True and zliczanie_obiektow >2:
+            punkty = []
+            for i in range(0, len(x)):
+                punkty.append([x[i], y[i] ])
+            p = 0
+            for i in range(len(punkty)):
+                if i ==len(punkty) - 1:
+                    p += (punkty[i][0]+ punkty[0][0]) * (punkty[i][1] - punkty[0][1])
+                else:
+                    p += (punkty[i][0] + punkty[i + 1][0]) * (punkty)
+                    
+        
    
     
     
