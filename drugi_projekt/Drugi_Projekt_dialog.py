@@ -43,14 +43,21 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
         self.pushButton_zlicz_elementy.clicked.connect(self.zlicz_elementy)
-    
-    def zlicz_elementy(self):
-        
-        biezaca_warstwa = self.mMapLayerComboBox.currentLayer()        
-        zaznaczone_elementy = biezaca_warstwa.selectedFeatures()
-        liczba_zaznaczonych_elementow = len(zaznaczone_elementy)
-        self.label_lb_elementow.setText(str(liczba_zaznaczonych_elementow))
-        
-        
+        self.radioButton_pole.clicked.connect(self.obliczanie)
+        self.radioButton_przewyzszenia.clicked.connect(self.obliczanie)
+
+    def obliczanie(self):
+        aktywna_warstwa = iface.activeLayer()
+        zliczanie_obiektow = aktywna_warstwa.selectedFeatureCount()
+        X = []
+        Y = []
+        Z = []
+        nr = []
+        for punkt in aktywna_warstaw.selectedFeatureCount():
+            x.append(punkt[" x_92 "])
+            y.append(punkt[" y_92 "])
+            z.append(punkt[" z_92 "])
+            nr.append(punkt[" nr "])
+   
     
     
