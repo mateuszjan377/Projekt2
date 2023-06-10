@@ -58,6 +58,10 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             y.append(punkt[" y_92 "])
             z.append(punkt[" z_92 "])
             nr.append(punkt[" nr "])
+            
+        If self.redioButton.isChecked() == Trude and zliczenie_obiektow
+            
+            
    
     
     
