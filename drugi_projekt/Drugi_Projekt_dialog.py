@@ -64,18 +64,6 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             X.append(x)
             Y.append(y)
             
-         '''   
-        X = []
-        Y = []
-        Z = []
-        nr = []
-        for punkt in len(aktywna_warstwa.selectedFeatureCount()):
-            X.append(punkt[" x_92 "])
-            Y.append(punkt[" y_92 "])
-            Z.append(punkt[" z_92 "])
-            nr.append(punkt[" nr "])
-         '''   
-         
         if self.radioButton_przewyzszenia.isChecked() == True and len(liczba_elementow) == 2:
             dh = Z[1] - Z[0]
             punkt_1 = nr[0]
