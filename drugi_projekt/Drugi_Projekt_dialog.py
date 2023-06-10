@@ -26,6 +26,11 @@ import os
 
 from qgis.PyQt import uic
 from qgis.PyQt import QtWidgets
+from qgis.utils import iface
+from qgis.core import QgsWkbTypes
+import numpy as np
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -42,40 +47,62 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
-        self.pushButton_zlicz_elementy.clicked.connect(self.zlicz_elementy)
+        self.pushButton_lczba_elementow.clicked.connect(self.zlicz_elementy)
         self.radioButton_pole.clicked.connect(self.obliczanie)
         self.radioButton_przewyzszenia.clicked.connect(self.obliczanie)
 
     def obliczanie(self):
         aktywna_warstwa = iface.activeLayer()
-        zliczanie_obiektow = aktywna_warstwa.selectedFeatureCount()
+        liczba_elementow = self.mMapLayerComboBox.currentLayer().selectedFeatures()
+        X = []
+        Y = []
+     
+        for punkt in liczba_elementow:
+            wsp = punkt.geometry().asPoint()
+            x = wsp.x()
+            y = wsp.y()
+            X.append(x)
+            Y.append(y)
+            
+         '''   
         X = []
         Y = []
         Z = []
         nr = []
-        for punkt in aktywna_warstaw.selectedFeatureCount():
-            x.append(punkt[" x_92 "])
-            y.append(punkt[" y_92 "])
-            z.append(punkt[" z_92 "])
+        for punkt in len(aktywna_warstwa.selectedFeatureCount()):
+            X.append(punkt[" x_92 "])
+            Y.append(punkt[" y_92 "])
+            Z.append(punkt[" z_92 "])
             nr.append(punkt[" nr "])
-            
-        If self.redioButton.isChecked() == Trude and zliczenie_obiektow
-            dh = z[1] -z[0]
+         '''   
+         
+        if self.radioButton_przewyzszenia.isChecked() == True and len(liczba_elementow) == 2:
+            dh = Z[1] - Z[0]
             punkt_1 = nr[0]
             punkt_2 = nr[1]
-            inface.messageBar().pushMessage("przewyzszenie wysokosci miedzy punktem" '+str(punkt_1)+ 'a punktem 'str(punkt_2)+'radioButton_pole)
+            iface.messageBar().pushMessage('Różnica wysokosci między punktem '+ str(punkt_1)+ ' oraz punktem '+str(punkt_2) + ' to: '+str(round(dh,3))+' |m|')
             
-        elif self.radioButton_pole.isChecked()  == True and zliczanie_obiektow >2:
+        elif self.radioButton_pole.isChecked()  == True and len(liczba_elementow) >2:
             punkty = []
-            for i in range(0, len(x)):
-                punkty.append([x[i], y[i] ])
-            p = 0
+            for i in range(0, len(X)):
+                punkty.append([X[i], Y[i] ])
+            pa = 0
             for i in range(len(punkty)):
                 if i ==len(punkty) - 1:
-                    p += (punkty[i][0]+ punkty[0][0]) * (punkty[i][1] - punkty[0][1])
+                    pa += (punkty[i][0]+ punkty[0][0]) * (punkty[i][1] - punkty[0][1])
                 else:
-                    p += (punkty[i][0] + punkty[i + 1][0]) * (punkty)
-                    
+                    pa += (punkty[i][0] + punkty[i + 1][0]) * (punkty)
+            P = abs( -pa/2)
+                      
+            iface.messageBar().pushMessage('Pole obszaru wynosi: '+str(round(P,5))+' [m2]')
+       
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText('Zła liczba zaznaczonych punktów do tej operacji!')
+            msg.setInformativeText
+            msg.setWindowTitle("Błąd przy zaznaczaniu punktów!!")
+            msg.exec_()                   
         
    
     
