@@ -47,7 +47,6 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
-        self.pushButton_lczba_elementow.clicked.connect(self.zlicz_elementy)
         self.radioButton_pole.clicked.connect(self.obliczanie)
         self.radioButton_przewyzszenia.clicked.connect(self.obliczanie)
 
@@ -56,6 +55,9 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         liczba_elementow = self.mMapLayerComboBox.currentLayer().selectedFeatures()
         X = []
         Y = []
+        H = []
+        nr = []
+        i = 0
      
         for punkt in liczba_elementow:
             wsp = punkt.geometry().asPoint()
@@ -63,9 +65,15 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             y = wsp.y()
             X.append(x)
             Y.append(y)
+            i+=1
+            nr.append(i)
+            
+        wyoskosci =inface.activeLayer().selectedFeatures()
+        for i in wysokosci:
+            H.append(i[2])
             
         if self.radioButton_przewyzszenia.isChecked() == True and len(liczba_elementow) == 2:
-            dh = Z[1] - Z[0]
+            dh = H[1] - H[0]
             punkt_1 = nr[0]
             punkt_2 = nr[1]
             iface.messageBar().pushMessage('Różnica wysokosci między punktem '+ str(punkt_1)+ ' oraz punktem '+str(punkt_2) + ' to: '+str(round(dh,3))+' |m|')
@@ -91,7 +99,24 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             msg.setInformativeText
             msg.setWindowTitle("Błąd przy zaznaczaniu punktów!!")
             msg.exec_()                   
-        
+            
+    def katy(self, p, punkt1):
+        dx = p[0] - punkt1[0]
+        dy = p[1] - punkt1[1]
+        kat = atan2(dx, dy)
+        return kat
+    
+    def sortowanie_punktow(self, k):
+        k = []
+        elementy = self.mMapLayerComboBox_layers.currentLayer().selectedFeatures()
+        for element in elementy:
+            wspolrzedne = element.geometry().asPoint()
+            X = wspolrzedne.x()
+            Y = wspolrzedne.y()
+            k.append([X, Y])
+        punkt1 = [sum(p[0] for p in k) / len(k), sum(p[1] for p in k) / len(k)]
+        posortowane = sorted(k, key = lambda p: self.katy(p, punkt1))
+        return posortowane
    
     
     
