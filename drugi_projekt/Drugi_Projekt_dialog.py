@@ -31,6 +31,7 @@ from qgis.core import QgsWkbTypes
 import numpy as np
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox
+from math import atan2
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -49,6 +50,11 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         self.setupUi(self)
         self.radioButton_pole.clicked.connect(self.obliczanie)
         self.radioButton_przewyzszenia.clicked.connect(self.obliczanie)
+        self.zlicz_elementy.clicked.connect(self.zlicz_elementy_funkcja)
+        
+    def zlicz_elementy_funkcja(self):
+        elementy = len(self.mMapLayerComboBox.currentLayer().selectedFeatures())
+        self.zlicz_elementy_wynik.setText(str(elementy))
 
     def obliczanie(self):
         aktywna_warstwa = iface.activeLayer()
@@ -68,7 +74,7 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
             i+=1
             nr.append(i)
             
-        wyoskosci =inface.activeLayer().selectedFeatures()
+        wysokosci =iface.activeLayer().selectedFeatures()
         for i in wysokosci:
             H.append(i[2])
             
@@ -87,7 +93,7 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
                 if i ==len(punkty) - 1:
                     pa += (punkty[i][0]+ punkty[0][0]) * (punkty[i][1] - punkty[0][1])
                 else:
-                    pa += (punkty[i][0] + punkty[i + 1][0]) * (punkty)
+                    pa += (punkty[i][0] + punkty[i + 1][0]) * (punkty[i][1]-punkty[i+1][1])
             P = abs( -pa/2)
                       
             iface.messageBar().pushMessage('Pole obszaru wynosi: '+str(round(P,5))+' [m2]')
@@ -117,6 +123,7 @@ class DrugiProjektDialog(QtWidgets.QDialog, FORM_CLASS):
         punkt1 = [sum(p[0] for p in k) / len(k), sum(p[1] for p in k) / len(k)]
         posortowane = sorted(k, key = lambda p: self.katy(p, punkt1))
         return posortowane
+    
    
     
     
