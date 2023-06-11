@@ -1,0 +1,14 @@
+\babel@toc {polish}{}\relax 
+\contentsline {section}{\numberline {1}Wstęp}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Cel ćwiczenia}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Wykorzystane narzędzia i materiały}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Przebieg ćwiczenia}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}GitHub}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Przygotowanie do programowania}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Transformation}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Test skryptu}{2}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Biblioteka argparse}{2}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Podsumowanie}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Rezultat}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Umiejętności nabyte w trakcie ćwiczenia}{2}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Spostrzeżenia i trudności}{3}{subsection.3.3}%
