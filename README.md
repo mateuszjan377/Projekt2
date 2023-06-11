@@ -1,4 +1,4 @@
-# Projekt Wtyczcka Qgis
+# Projekt Wtyczczka Qgis
 Wtyczka znajduje się w pliku "drugi.projekt"
 
 # Jakie wymagania trzeba spełnić, by program działał na danym komputerze?
