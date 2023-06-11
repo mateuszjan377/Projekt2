@@ -1,7 +1,7 @@
 # Projekt Wtyczka Qgis
 Wtyczka znajduje się w pliku "drugi.projekt"
 
-# Jakie wymagania trzeba spełnić, by program działał na danym komputerze?
+# Jakie wymagania trzeba spełnić, by wtyczka działała na danym komputerze?
 - Qgis wersja 3.30
 
 # Dla jakiego systemu operacyjnego została stworzona wtyczka?
