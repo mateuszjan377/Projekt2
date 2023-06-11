@@ -13,7 +13,8 @@ Należy wybrać uprzednio zainstalowana wtyczke drugi_projekt z paska "wtyczki"
 Obliczone pole wyświetli sie na górze ekranu pod paskiem przyborów.
 - Funcja przewyższenia: zaznacz 2 punkty oraz kliknij przycisk przewyższenie.
 Obliczone przewyższenie wyświetli sie na górze ekranu pod paskiem przyborów.
-
+- Funkcja zlicz elementy: zaznacz wybrana liczbe elementów nastepnie kliknij przycisk zlicz elementy. 
+Liczba elementów pojawi sie pod przyciskiem.
 
 
     
