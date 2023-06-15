@@ -1,8 +1,11 @@
+
 # Projekt Wtyczka Qgis
 Wtyczka znajduje się w pliku "drugi.projekt"
 
 # Jakie wymagania trzeba spełnić, by wtyczka działała na danym komputerze?
 - Qgis wersja 3.30
+- W tabeli atrybutów są wymagane 3 kolumny (1 o nazwie atrybutu x, 2 o nazwie atrybutu y, 3 o nazwie atrybutu h, te trzy kolumny zawieraja wspolrzedne x y h wszystkie sa w typie float)
+- aby obliczyc pole wykorzystywane sa wspolrzedne x y a roznica wysokosci jest liczona za pomca wspolrzednej h
 
 # Dla jakiego systemu operacyjnego została stworzona wtyczka?
 - wtyczka działa zarówno na Windows 10 jak i macOS Ventura 13.0
